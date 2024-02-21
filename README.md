@@ -1,5 +1,33 @@
 # kafka-crash-course
 
+The Kafka-based Rider Location Tracking System is a real-time application designed to track the locations of riders in a distributed environment using Apache Kafka as the messaging system. The system consists of four main components: `client.js`, `admin.js`, `producer.js`, and `consumer.js`, each serving a specific role in the tracking system.
+
+## Components
+1. Client Configuration (client.js):
+- Initializes the Kafka client configuration using the kafkajs library.
+- Specifies the Kafka client ID and the brokers' addresses.
+
+2. Admin Operations (admin.js):
+
+- Manages administrative tasks related to Kafka topics.
+- Connects to the Kafka broker.
+- Creates a topic named "rider-updates" with two partitions for data distribution.
+- Disconnects from the Kafka broker after completing administrative tasks.
+
+3. Producer (producer.js):
+- Connects to the Kafka broker.
+- Allows users to input rider names and their locations.
+- Sends location updates of riders to the "rider-updates" topic with partitioning based on location (north or south).
+- Disconnects from the Kafka broker after completing data publishing.
+
+4. Consumer (consumer.js):
+
+- Connects to the Kafka broker with a specified consumer group ID.
+- Subscribes to the "rider-updates" topic from the beginning.
+- Listens for incoming messages and processes them.
+- Outputs the rider location updates along with the partition information.
+
+
 ## Prerequisite
 - Knowledge
   - Node.JS
@@ -10,7 +38,16 @@
   - VsCode: [Download VSCode](https://code.visualstudio.com)
 
 ## Architecture : Apache Kafka
+
 ![](screenshots/apache_Kafka.png)
+
+The Rider Location Tracking System facilitates real-time tracking of riders' locations, enabling efficient monitoring and management of rider operations. It leverages Kafka's distributed messaging capabilities to ensure reliable communication and scalability in a distributed environment.
+
+By employing Kafka as the underlying messaging system, the system achieves high throughput, fault tolerance, and low latency, making it suitable for large-scale real-time applications such as ride-sharing platforms and logistics management systems.
+
+
+
+
 
 
 ## Commands
